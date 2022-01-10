@@ -1,5 +1,11 @@
 # nuxt-boilerplate
 
+## Install
+
+```bash
+git clone https://github.com/mig-hub/nuxt-boilerplate.git
+```
+
 ## Build Setup
 
 ```bash
