@@ -24,8 +24,19 @@ export default {
     ]
   },
 
+  // Style ressources are available everywhere.
+  // The framework should not be changed.
+  // Use the config.scss to set your variables and mixins.
+  styleResources: {
+    scss: [
+      '~/assets/framework.scss',
+      '~/assets/config.scss'
+    ]
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/main'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

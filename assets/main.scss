@@ -1,0 +1,23 @@
+// Fonts
+
+// Basic font loading example:
+// @font-face{
+//   font-family: "Font Name";
+//   src: url("~assets/fonts/filename.woff2") format("woff2"), url("~assets/fonts/filename.woff") format("woff");
+// }
+
+// General
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $bg-color;
+  color: $fg-color;
+  font-family: $body-font-family;
+  overflow: hidden; // Scroll is on .page elements
+  font-size: vw($body-size);
+  @include mobile-portrait {
+    font-size: vw($body-size-mobile);
+  }
+}
+
