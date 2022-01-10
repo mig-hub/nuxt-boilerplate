@@ -1,0 +1,22 @@
+.slidenext-leave-active,
+.slidenext-enter-active {
+  @include transition(0.6s cubic-bezier(.73, .04, .13, .98));
+}
+.slidenext-enter {
+  transform: translate(100%, 0);
+}
+.slidenext-leave-to {
+  transform: translate(-100%, 0);
+}
+
+.slideprev-leave-active,
+.slideprev-enter-active {
+  @include transition(0.6s cubic-bezier(.73, .04, .13, .98));
+}
+.slideprev-enter {
+  transform: translate(-100%, 0);
+}
+.slideprev-leave-to {
+  transform: translate(100%, 0);
+}
+

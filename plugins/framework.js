@@ -3,7 +3,7 @@
 
 import Vue from 'vue'
 
-if (!Vue.__my_framewor_mixin__) {
+if (!Vue.__my_framework_mixin__) {
 
   Vue.__my_framework_mixin__ = true
 
