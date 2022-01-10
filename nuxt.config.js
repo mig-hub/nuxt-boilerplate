@@ -6,8 +6,9 @@ export default {
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
+  // Update title and meta description with default values
   head: {
-    title: 'nuxt-boilerplate',
+    title: 'Nuxt Boilerplate',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,7 +16,8 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { httpEquiv: "x-ua-compatible", content: "ie=edge" }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
