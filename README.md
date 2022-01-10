@@ -3,8 +3,28 @@
 ## Install
 
 ```bash
-git clone https://github.com/mig-hub/nuxt-boilerplate.git
+$ git clone https://github.com/mig-hub/nuxt-boilerplate.git
 ```
+
+Rename directory and move there.
+Update the `package.json` to change the package name.
+
+Then install packages:
+
+```bash
+$ npm install
+```
+
+Install contentful if you want to use it.
+
+```bash
+$ npm install --save contentful
+```
+
+If you do, ensure you uncomment necessary lines in the config and add the ENV variables.
+
+There are plugins and middlewares ready to be used by uncommenting the right lines in the config.
+
 
 ## Build Setup
 
