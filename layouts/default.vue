@@ -17,11 +17,18 @@ export default {
 
 <style lang="scss" scoped>
 
-.page-header {
+#layout > header {
   z-index: 2;
 }
 main {
   z-index: 1;
+}
+
+.page {
+  padding-top: vw($header-height);
+  @include mobile-portrait {
+    padding-top: vw($header-height-mobile);
+  }
 }
 
 .page {
