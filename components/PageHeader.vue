@@ -19,7 +19,7 @@ export default {
       this.navOpen = !this.navOpen;
     },
     onResize() {
-      this.navOpen = true;
+      this.navOpen = false;
     }
   },
   mounted: function () {
