@@ -2,7 +2,7 @@
 header(ref='header' v-bind:class='{active: navOpen}')
   burger(v-on:click.native='toggleNav' v-bind:class='{active: navOpen}')
   nav
-    ol
+    ol(v-on:click='closeNav')
       li
         nuxt-link(to='/') Home
 </template>
@@ -18,15 +18,15 @@ export default {
     toggleNav() {
       this.navOpen = !this.navOpen;
     },
-    onResize() {
+    closeNav() {
       this.navOpen = false;
     }
   },
   mounted: function () {
     this.$nextTick(function () {
-      this.onResize();
+      this.closeNav();
     });
-    window.addEventListener('resize', this.onResize);
+    window.addEventListener('resize', this.closeNav);
   }
 }
 </script>
