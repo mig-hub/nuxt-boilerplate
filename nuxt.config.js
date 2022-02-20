@@ -56,8 +56,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/markdownit'
   ],
+
+  // Markdown
+  markdownit: {
+    breaks: true,
+    runtime: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
