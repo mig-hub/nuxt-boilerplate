@@ -21,6 +21,7 @@ export default {
   z-index: 2;
 }
 main {
+  position: relative;
   z-index: 1;
 }
 
