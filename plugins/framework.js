@@ -12,6 +12,16 @@ if (!Vue.__my_framework_mixin__) {
 
       navigateBack() {
         window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
+      },
+
+      truncate(str, wordCount) {
+        const ending = '...'
+        const atoms = str.split(' ')
+        if (atoms.length > wordCount) {
+          return atoms.slice(0, wordCount).join(' ') + ending
+        } else {
+          return str
+        }
       }
 
     }
