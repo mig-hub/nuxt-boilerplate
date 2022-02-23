@@ -18,7 +18,7 @@ export const mutations = {
   // Try to use this generic one only when the key is dynamic.
   // For example when looping through contentful pages.
   // Otherwise it is better to use a specific mutator instead.
-  setKeyValue(state, key, value) {
+  setKeyValue(state, { key, value }) {
     state[key] = value
   }
 
@@ -37,7 +37,10 @@ export const actions = {
     //   limit: 10
     // })
     // content.items.forEach(function(item) {
-    //   commit('setKeyValue', item.sys.contentType.sys.id, item)
+    //   commit('setKeyValue', {
+    //     key: item.sys.contentType.sys.id,
+    //     value: item
+    //   })
     // })
 
     //
