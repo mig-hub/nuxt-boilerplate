@@ -34,7 +34,7 @@ export const actions = {
     // let content = await contentfulClient.getEntries({
     //   'sys.contentType.sys.id[in]': 'homePage',
     //   include: 10,
-    //   limit: 5
+    //   limit: 10
     // })
     // content.items.forEach(function(item) {
     //   commit('setKeyValue', item.sys.contentType.sys.id, item)
