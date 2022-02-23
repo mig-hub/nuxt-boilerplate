@@ -55,6 +55,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -77,5 +78,11 @@ export default {
     // Uncomment and set these for Contentful
     // CTF_SPACE: '',
     // CTF_TOKEN: ''
+  },
+
+  googleAnalytics: {
+    // Add ID to make it work
+    // id: 'UA-XXX-X'
   }
+
 }
