@@ -150,7 +150,12 @@ $vw-disabled: false;
   --real100vh: 100vh; // Use this to fix iOS 100vh problem
 }
 
-* { @include box-sizing(border-box); }
+* {
+  @include box-sizing(border-box);
+  &:before, &:after {
+    @include box-sizing(border-box);
+  }
+}
 
 html {
   font-size: 100%;
