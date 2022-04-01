@@ -3,6 +3,7 @@ $body-size-mobile: 18px;
 
 $ref-width: 1440px;
 $ref-width-mobile: 375px;
+$mobile-breakpoint: 600px;
 
 $fg-color: #1b1b1b;
 $bg-color: #ffffff;
@@ -15,7 +16,7 @@ $body-font-family: sans-serif;
 $vw-ref-width: $ref-width; // Init vw ref width
 
 @mixin mobile-portrait {
-  @media screen and (orientation: portrait) and (max-width: 600px) {
+  @media screen and (orientation: portrait) and (max-width: $mobile-breakpoint) {
     $vw-ref-width: $ref-width-mobile !global;
     @content;
     $vw-ref-width: $ref-width !global;

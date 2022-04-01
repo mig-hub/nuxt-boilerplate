@@ -3,16 +3,75 @@
 // import contentfulClient from '~/plugins/contentful.js'
 //
 export const state = () => ({
-  contentLoaded: false
+  contentLoaded: false, // Set to true when landing content was loaded
+  scrollTop: 0,
+  scrollDirection: 0, // 0: stable, 1: down, -1: up
+  orientation: 1, // 0: square, 1: landscape, -1: portrait
+  mobileBreakpoint: 1, // 0: equal, 1: above, -1: below
 })
 
 export const getters = {
+
+  scrollingDown(state) {
+    return state.scrollDirection > 0
+  },
+  scrollingUp(state) {
+    return state.scrollDirection < 0
+  },
+  scrollingStable(state) {
+    return state.scrollDirection === 0
+  },
+
+  isLandscape(state) {
+    return state.orientation > 0
+  },
+  isPortrait(state) {
+    return state.orientation < 0
+  },
+  isSquare(state) {
+    return state.orientation === 0
+  },
+
+  aboveMobile(state) {
+    return state.mobileBreakpoint > 0
+  },
+  belowMobile(state) {
+    return state.mobileBreakpoint < 0
+  },
+  justMobile(state) {
+    return state.mobileBreakpoint === 0
+  },
+
+  isMobilePortrait(state, getters) {
+    return getters.isPortrait && !getters.aboveMobile
+  },
+
+  notMobilePortrait(state, getters) {
+    return !getters.isMobilePortrait
+  }
+
 }
 
 export const mutations = {
 
   setContentLoaded(state, bool) {
     state.contentLoaded = (typeof bool != 'boolean') ? true : bool
+  },
+
+  setScrollTop(state, val) {
+    state.scrollTop = val
+  },
+
+  setScrollDirection(state, val) {
+    state.scrollDirection = val
+  },
+
+  setOrientation(state, val) {
+    state.orientation = val
+  },
+
+  setMobileBreakpoint(state, val) {
+    state.mobileBreakpoint = val
   },
 
   // Try to use this generic one only when the key is dynamic.
