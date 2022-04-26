@@ -40,5 +40,9 @@ if (!Vue.__my_framework_mixin__) {
     return Vue.options.filters.autolink(Vue.options.filters.nl2br(str));
   });
 
+  Vue.filter('googleMapsLink', function(query) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
+  });
+
 }
 
