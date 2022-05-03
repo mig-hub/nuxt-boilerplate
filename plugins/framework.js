@@ -3,7 +3,7 @@
 
 import Vue from 'vue'
 
-if (!Vue.__my_framework_mixin__) {
+if ( !Vue.__my_framework_mixin__ ) {
 
   Vue.__my_framework_mixin__ = true
 
@@ -11,10 +11,10 @@ if (!Vue.__my_framework_mixin__) {
     methods: {
 
       navigateBack() {
-        window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
+        window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
       },
 
-      truncate(str, wordCount) {
+      truncate( str, wordCount ) {
         const ending = '...'
         const atoms = str.split(' ')
         if (atoms.length > wordCount) {
@@ -22,27 +22,27 @@ if (!Vue.__my_framework_mixin__) {
         } else {
           return str
         }
-      }
+      },
 
-    }
+    },
 
   })
 
-  Vue.filter('nl2br', function(str) {
-    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2');
-  });
+  Vue.filter( 'nl2br', function( str ) {
+    return ( str + '' ).replace( /([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2' )
+  })
 
-  Vue.filter('autolink', function(str) {
-    return (str + '').replace(/(\b[a-z0-9\.\-_]+@[a-z0-9\.\-_]+\b)/ig, '<a href="mailto:$1">$1</a>');
-  });
+  Vue.filter( 'autolink', function( str ) {
+    return ( str + '' ).replace( /(\b[a-z0-9\.\-_]+@[a-z0-9\.\-_]+\b)/ig, '<a href="mailto:$1">$1</a>' )
+  })
 
-  Vue.filter('autohtml', function(str) {
-    return Vue.options.filters.autolink(Vue.options.filters.nl2br(str));
-  });
+  Vue.filter( 'autohtml', function( str ) {
+    return Vue.options.filters.autolink( Vue.options.filters.nl2br( str ) )
+  })
 
-  Vue.filter('googleMapsLink', function(query) {
-    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
-  });
+  Vue.filter( 'googleMapsLink', function( query ) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent( query )
+  })
 
 }
 

@@ -1,21 +1,25 @@
 <template lang="pug">
-img(v-bind:src='imgSrc' v-bind:alt='imgAlt' v-bind:title='imgTitle')
+img(
+  :src='imgSrc'
+  :alt='imgAlt'
+  :title='imgTitle'
+  )
 </template>
 
 <script>
 export default {
   props: {
     image: {
-      type: Object
+      type: Object,
     },
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     alt: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
     imgSrc() {
@@ -26,8 +30,8 @@ export default {
     },
     imgTitle() {
       return this.title
-    }
-  }
+    },
+  },
 }
 </script>
 

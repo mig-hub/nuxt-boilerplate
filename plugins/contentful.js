@@ -6,26 +6,26 @@ const config = {
   accessToken: process.env.CTF_TOKEN,
 };
 
-const contentfulClient = createClient(config)
+const contentfulClient = createClient( config )
 
-if (!Vue.__my_contentful_mixin__) {
+if ( !Vue.__my_contentful_mixin__ ) {
 
   Vue.__my_contentful_mixin__ = true
 
   Vue.mixin({
     methods: {
-      mediaWidth (media) {
-        return media.fields.image.fields.file.details.image.width;
+      mediaWidth ( media ) {
+        return media.fields.image.fields.file.details.image.width
       },
-      mediaHeight (media) {
-        return media.fields.image.fields.file.details.image.height;
-      }
-    }
+      mediaHeight ( media ) {
+        return media.fields.image.fields.file.details.image.height
+      },
+    },
   })
 
-  Vue.filter('mediaUri', function(media) {
-    return media.fields.file.url;
-  });
+  Vue.filter( 'mediaUri', function( media ) {
+    return media.fields.file.url
+  } )
 
 }
 

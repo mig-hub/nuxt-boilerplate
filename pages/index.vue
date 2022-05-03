@@ -12,11 +12,11 @@ export default {
       /*   { */
       /*     hid: 'description', */
       /*     name: 'description', */
-      /*     content: this.page.metaDescription */
-      /*   } */
-      /* ] */
+      /*     content: this.page.metaDescription, */
+      /*   }, */
+      /* ], */
     }
-  }
+  },
 }
 </script>
 

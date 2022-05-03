@@ -13,18 +13,18 @@ export default {
   head: {
     title: 'Nuxt Boilerplate',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
-      { httpEquiv: "x-ua-compatible", content: "ie=edge" }
+      { httpEquiv: "x-ua-compatible", content: "ie=edge" },
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
-    ]
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+    ],
   },
 
   // Style ressources are available everywhere.
@@ -33,22 +33,22 @@ export default {
   styleResources: {
     scss: [
       '~/assets/framework.scss',
-      '~/assets/config.scss'
-    ]
+      '~/assets/config.scss',
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     // '~/assets/prevNextPageTransition',
-    '~/assets/main'
+    '~/assets/main',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/polyfills.js', mode: 'client'},
+    { src: '~/plugins/polyfills.js', mode: 'client' },
     // '~/plugins/contentful.js',
     // '~/plugins/prevNextPageTransition.js',
-    '~/plugins/framework.js'
+    '~/plugins/framework.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -56,19 +56,19 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/style-resources',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
   ],
 
   // Markdown
   markdownit: {
     breaks: true,
-    runtime: true
+    runtime: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -78,12 +78,12 @@ export default {
   env: {
     // Uncomment and set these for Contentful
     // CTF_SPACE: '',
-    // CTF_TOKEN: ''
+    // CTF_TOKEN: '',
   },
 
   googleAnalytics: {
     // Add ID to make it work
-    // id: 'UA-XXX-X'
-  }
+    // id: 'UA-XXX-X',
+  },
 
 }

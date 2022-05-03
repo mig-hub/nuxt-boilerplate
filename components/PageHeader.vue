@@ -1,32 +1,42 @@
 <template lang="pug">
-header(ref='header' v-bind:class='{active: navOpen}')
-  burger(v-on:click.native='toggleNav' v-bind:class='{active: navOpen}')
+header(
+  ref='header'
+  :class='{ active: navOpen }'
+  )
+  Burger(
+    @click.native='toggleNav'
+    :class='{ active: navOpen }'
+    )
   nav
-    ol(v-on:click='closeNav')
+    ol(
+      @click='closeNav'
+      )
       li
-        nuxt-link(to='/') Home
+        NuxtLink(
+          to='/'
+          ) Home
 </template>
 
 <script>
 export default {
-  data: function() {
+  data() {
     return {
-      navOpen: false
+      navOpen: false,
     }
   },
   methods: {
     toggleNav() {
-      this.navOpen = !this.navOpen;
+      this.navOpen = !this.navOpen
     },
     closeNav() {
-      this.navOpen = false;
-    }
+      this.navOpen = false
+    },
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      this.closeNav();
-    });
-    window.addEventListener('resize', this.closeNav);
+  mounted() {
+    this.$nextTick( function () {
+      this.closeNav()
+    } )
+    window.addEventListener( 'resize', this.closeNav )
   }
 }
 </script>

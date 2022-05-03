@@ -48,7 +48,7 @@ export const getters = {
 
   notMobilePortrait(state, getters) {
     return !getters.isMobilePortrait
-  }
+  },
 
 }
 
@@ -79,7 +79,7 @@ export const mutations = {
   // Otherwise it is better to use a specific mutator instead.
   setKeyValue(state, { key, value }) {
     state[key] = value
-  }
+  },
 
 }
 
@@ -105,7 +105,7 @@ export const actions = {
     //
 
     commit('setContentLoaded')
-  }
+  },
 
 }
 
