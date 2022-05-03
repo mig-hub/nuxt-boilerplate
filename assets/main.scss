@@ -9,6 +9,7 @@
 // General
 
 :root {
+  --tablet-breakpoint: #{$tablet-breakpoint};
   --mobile-breakpoint: #{$mobile-breakpoint};
 }
 
@@ -20,6 +21,9 @@ body {
   font-family: $body-font-family;
   overflow: hidden; // Scroll is on .page elements
   font-size: vw($body-size);
+  @include tablet-portrait {
+    font-size: vw($body-size-tablet);
+  }
   @include mobile-portrait {
     font-size: vw($body-size-mobile);
   }

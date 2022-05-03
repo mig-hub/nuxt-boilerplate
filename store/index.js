@@ -7,78 +7,105 @@ export const state = () => ({
   scrollTop: 0,
   scrollDirection: 0, // 0: stable, 1: down, -1: up
   orientation: 1, // 0: square, 1: landscape, -1: portrait
+  tabletBreakpoint: 1, // 0: equal, 1: above, -1: below
   mobileBreakpoint: 1, // 0: equal, 1: above, -1: below
 })
 
 export const getters = {
 
-  scrollingDown(state) {
+  scrollingDown( state ) {
     return state.scrollDirection > 0
   },
-  scrollingUp(state) {
+  scrollingUp( state ) {
     return state.scrollDirection < 0
   },
-  scrollingStable(state) {
+  scrollingStable( state ) {
     return state.scrollDirection === 0
   },
 
-  isLandscape(state) {
+  isLandscape( state ) {
     return state.orientation > 0
   },
-  isPortrait(state) {
+  isPortrait( state ) {
     return state.orientation < 0
   },
-  isSquare(state) {
+  isSquare( state ) {
     return state.orientation === 0
   },
 
-  aboveMobile(state) {
+  aboveMobile( state ) {
     return state.mobileBreakpoint > 0
   },
-  belowMobile(state) {
+  belowMobile( state ) {
     return state.mobileBreakpoint < 0
   },
-  justMobile(state) {
+  justMobile( state ) {
     return state.mobileBreakpoint === 0
   },
 
-  isMobilePortrait(state, getters) {
+  aboveTablet( state ) {
+    return state.tabletBreakpoint > 0
+  },
+  belowTablet( state ) {
+    return state.tabletBreakpoint < 0
+  },
+  justTablet( state ) {
+    return state.tabletBreakpoint === 0
+  },
+
+  isMobilePortrait( state, getters ) {
     return getters.isPortrait && !getters.aboveMobile
   },
 
-  notMobilePortrait(state, getters) {
+  isTabletPortrait( state, getters ) {
+    return getters.isPortrait && getters.aboveMobile && !getters.aboveTablet
+  },
+
+  notTabletPortrait( state, getters ) {
+    return !getters.isTabletPortrait
+  },
+
+  notMobilePortrait( state, getters ) {
     return !getters.isMobilePortrait
+  },
+
+  isDesktop( state, getters ) {
+    return getters.notMobilePortrait && getters.notTabletPortrait
   },
 
 }
 
 export const mutations = {
 
-  setContentLoaded(state, bool) {
-    state.contentLoaded = (typeof bool != 'boolean') ? true : bool
+  setContentLoaded( state, bool ) {
+    state.contentLoaded = ( typeof bool != 'boolean' ) ? true : bool
   },
 
-  setScrollTop(state, val) {
+  setScrollTop( state, val ) {
     state.scrollTop = val
   },
 
-  setScrollDirection(state, val) {
+  setScrollDirection( state, val ) {
     state.scrollDirection = val
   },
 
-  setOrientation(state, val) {
+  setOrientation( state, val ) {
     state.orientation = val
   },
 
-  setMobileBreakpoint(state, val) {
+  setTabletBreakpoint( state, val ) {
+    state.tabletBreakpoint = val
+  },
+
+  setMobileBreakpoint( state, val ) {
     state.mobileBreakpoint = val
   },
 
   // Try to use this generic one only when the key is dynamic.
   // For example when looping through contentful pages.
   // Otherwise it is better to use a specific mutator instead.
-  setKeyValue(state, { key, value }) {
-    state[key] = value
+  setKeyValue( state, { key, value } ) {
+    state[ key ] = value
   },
 
 }

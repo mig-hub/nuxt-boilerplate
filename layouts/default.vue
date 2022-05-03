@@ -31,7 +31,7 @@ export default {
       return pages[ 0 ].scrollTop
     },
 
-    storeOrientationInfo() {
+    storeOrientation() {
       if ( window.innerWidth > window.innerHeight ) {
         this.$store.commit( 'setOrientation', 1 )
       } else if ( window.innerWidth < window.innerHeight ) {
@@ -39,15 +39,27 @@ export default {
       } else {
         this.$store.commit( 'setOrientation', 0 )
       }
-      let mobileBreakpointPx = getComputedStyle( document.documentElement ).getPropertyValue( '--mobile-breakpoint' )
-      let mobileBreakpoint = parseInt( mobileBreakpointPx )
-      if ( window.innerWidth > mobileBreakpoint ) {
-        this.$store.commit( 'setMobileBreakpoint', 1 )
-      } else if ( window.innerWidth < mobileBreakpoint ) {
-        this.$store.commit( 'setMobileBreakpoint', -1 )
+    },
+
+    storeBreakpoint( cssVar, commitName ) {
+      let breakpointPx = getComputedStyle( document.documentElement )
+        .getPropertyValue(cssVar)
+      let breakpoint = parseInt( breakpointPx )
+      if ( window.innerWidth > breakpoint ) {
+        this.$store.commit( commitName, 1 )
+      } else if ( window.innerWidth < breakpoint ) {
+        this.$store.commit( commitName, -1 )
       } else {
-        this.$store.commit( 'setMobileBreakpoint', 0 )
+        this.$store.commit( commitName, 0 )
       }
+    },
+
+    storeTabletBreakpoint() {
+      this.storeBreakpoint( '--tablet-breakpoint', 'setTabletBreakpoint' )
+    },
+
+    storeMobileBreakpoint() {
+      this.storeBreakpoint( '--mobile-breakpoint', 'setMobileBreakpoint' )
     },
 
     storeScrollInfo() {
@@ -73,7 +85,9 @@ export default {
 
     onEachFrame() {
       this.storeScrollInfo()
-      this.storeOrientationInfo()
+      this.storeOrientation()
+      this.storeTabletBreakpoint()
+      this.storeMobileBreakpoint()
       this.setReal100vh()
       window.requestAnimationFrame( this.onEachFrame )
     }
