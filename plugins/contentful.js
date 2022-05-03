@@ -23,7 +23,7 @@ if ( !Vue.__my_contentful_mixin__ ) {
     },
   })
 
-  Vue.filter( 'mediaUri', function( media ) {
+  Vue.filter( 'mediaUri', ( media ) => {
     return media.fields.file.url
   } )
 

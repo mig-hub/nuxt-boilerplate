@@ -93,18 +93,18 @@ export const actions = {
     // let content = await contentfulClient.getEntries({
     //   'sys.contentType.sys.id[in]': 'homePage',
     //   include: 10,
-    //   limit: 10
+    //   limit: 10,
     // })
-    // content.items.forEach(function(item) {
-    //   commit('setKeyValue', {
+    // content.items.forEach( ( item ) => {
+    //   commit( 'setKeyValue', {
     //     key: item.sys.contentType.sys.id,
-    //     value: item
-    //   })
-    // })
+    //     value: item,
+    //   } )
+    // } )
 
     //
 
-    commit('setContentLoaded')
+    commit( 'setContentLoaded' )
   },
 
 }

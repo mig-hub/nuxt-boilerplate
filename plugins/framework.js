@@ -28,19 +28,19 @@ if ( !Vue.__my_framework_mixin__ ) {
 
   })
 
-  Vue.filter( 'nl2br', function( str ) {
+  Vue.filter( 'nl2br', ( str ) => {
     return ( str + '' ).replace( /([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2' )
   })
 
-  Vue.filter( 'autolink', function( str ) {
+  Vue.filter( 'autolink', ( str ) => {
     return ( str + '' ).replace( /(\b[a-z0-9\.\-_]+@[a-z0-9\.\-_]+\b)/ig, '<a href="mailto:$1">$1</a>' )
   })
 
-  Vue.filter( 'autohtml', function( str ) {
+  Vue.filter( 'autohtml', ( str ) => {
     return Vue.options.filters.autolink( Vue.options.filters.nl2br( str ) )
   })
 
-  Vue.filter( 'googleMapsLink', function( query ) {
+  Vue.filter( 'googleMapsLink', ( query ) => {
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent( query )
   })
 

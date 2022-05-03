@@ -33,7 +33,7 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick( function () {
+    this.$nextTick( () => {
       this.closeNav()
     } )
     window.addEventListener( 'resize', this.closeNav )
