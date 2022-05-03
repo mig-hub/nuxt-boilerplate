@@ -1,12 +1,12 @@
 import Vue from "vue"
-const contentful = require('contentful')
+import { createClient } from "contentful"
 
 const config = {
   space: process.env.CTF_SPACE,
   accessToken: process.env.CTF_TOKEN,
 };
 
-const contentfulClient = contentful.createClient(config)
+const contentfulClient = createClient(config)
 
 if (!Vue.__my_contentful_mixin__) {
 
