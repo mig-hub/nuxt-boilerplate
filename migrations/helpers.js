@@ -85,10 +85,8 @@ module.exports = {
       .items({
         "type": "Link",
         "validations": [
-          {
-            ...this.isImage(),
-            ...this.isBelow1MB(),
-          },
+          ...this.isImage(),
+          ...this.isBelow1MB(),
         ],
         "linkType": "Asset",
       })
@@ -103,14 +101,14 @@ module.exports = {
 
   createEntryArrayField( contentType, fieldId, fieldName, acceptedTypes, control = {} ) {
 
+    // acceptedTypes can be an array or a single contentType name
+
     let field = contentType.createField(fieldId)
       .type('Array')
       .items({
         "type": "Link",
         "validations": [
-          {
-            "linkContentType": (acceptedTypes instanceof Array ? acceptedTypes : [acceptedTypes]),
-          },
+          ...isAcceptedTypes( acceptedTypes ),
         ],
         "linkType": "Entry",
       })
@@ -204,6 +202,15 @@ module.exports = {
           "min": null,
           "max": 1048576,
         },
+      },
+    ]
+  },
+
+  isAcceptedContentType( acceptedTypes ) {
+    // acceptedTypes can be an array or a single type
+    return [
+      {
+        "linkContentType": (acceptedTypes instanceof Array ? acceptedTypes : [acceptedTypes]),
       },
     ]
   },
