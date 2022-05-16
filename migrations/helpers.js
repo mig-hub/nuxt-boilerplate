@@ -12,6 +12,21 @@ module.exports = {
     return field;
   },
 
+  createSlugField( contentType, fieldId = 'slug', fieldName = 'Slug', control = {} ) {
+
+    let field = contentType.createField( fieldId )
+      // not isUnique() validation because it is not always required.
+      .type('Symbol')
+      .required( true )
+      .name( fieldName );
+    contentType.changeFieldControl( fieldId, 'builtin', 'slugEditor', {
+      helpText: "Used in the URL. Only change this if necessary.",
+      ...control,
+    });
+
+    return field;
+  },
+
   createTextField( contentType, fieldId = 'text', fieldName = 'Text', control = {} ) {
 
     let field = contentType.createField( fieldId )
@@ -85,8 +100,8 @@ module.exports = {
       .items({
         "type": "Link",
         "validations": [
-          ...this.isImage(),
-          ...this.isBelow1MB(),
+          this.isImage(),
+          this.isBelow1MB(),
         ],
         "linkType": "Asset",
       })
@@ -108,7 +123,7 @@ module.exports = {
       .items({
         "type": "Link",
         "validations": [
-          ...isAcceptedTypes( acceptedTypes ),
+          isAcceptedContentType( acceptedTypes ),
         ],
         "linkType": "Entry",
       })
@@ -128,7 +143,7 @@ module.exports = {
     let field = contentType.createField(fieldId)
       .type('Link')
       .validations([
-        ...this.isPDF(),
+        this.isPDF(),
       ])
       .linkType('Asset')
       .name( fieldName );
@@ -144,8 +159,8 @@ module.exports = {
     let field = contentType.createField(fieldId)
       .type('Link')
       .validations([
-        ...this.isImage(),
-        ...this.isBelow1MB(),
+        this.isImage(),
+        this.isBelow1MB(),
       ])
       .linkType('Asset')
       .name( fieldName );
@@ -175,44 +190,42 @@ module.exports = {
 
   },
 
+  isUnique() {
+    return {
+      "unique": true,
+    }
+  },
+
   isImage() {
-    return [
-      {
-        "linkMimetypeGroup": [
-          "image",
-        ],
-      },
-    ]
+    return {
+      "linkMimetypeGroup": [
+        "image",
+      ],
+    }
   },
 
   isPDF() {
-    return [
-      {
-        "linkMimetypeGroup": [
-          "pdfdocument",
-        ],
-      },
-    ]
+    return {
+      "linkMimetypeGroup": [
+        "pdfdocument",
+      ],
+    }
   },
 
   isBelow1MB() {
-    return [
-      {
-        "assetFileSize": {
-          "min": null,
-          "max": 1048576,
-        },
+    return {
+      "assetFileSize": {
+        "min": null,
+        "max": 1048576,
       },
-    ]
+    }
   },
 
   isAcceptedContentType( acceptedTypes ) {
     // acceptedTypes can be an array or a single type
-    return [
-      {
-        "linkContentType": (acceptedTypes instanceof Array ? acceptedTypes : [acceptedTypes]),
-      },
-    ]
+    return {
+      "linkContentType": (acceptedTypes instanceof Array ? acceptedTypes : [acceptedTypes]),
+    }
   },
 
   regexpUri() {
