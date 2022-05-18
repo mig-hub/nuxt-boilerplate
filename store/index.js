@@ -6,6 +6,7 @@ export const state = () => ({
   contentLoaded: false, // Set to true when landing content was loaded
   scrollTop: 0,
   scrollDirection: 0, // 0: stable, 1: down, -1: up
+  scrollDirectionBool: null, // true: down, false: up. Does not change state when stable. More Useful.
   orientation: 1, // 0: square, 1: landscape, -1: portrait
   tabletBreakpoint: 1, // 0: equal, 1: above, -1: below
   mobileBreakpoint: 1, // 0: equal, 1: above, -1: below
@@ -21,6 +22,15 @@ export const getters = {
   },
   scrollingStable( state ) {
     return state.scrollDirection === 0
+  },
+  // Most of the time these are the getters you'd want.
+  // It only changes state when there is a direction.
+  // Not when it is stable.
+  scrollingDownOrStopped( state ) {
+    return state.scrollDirectionBool === true
+  },
+  scrollingUpOrStopped( state ) {
+    return state.scrollDirectionBool === false
   },
 
   isLandscape( state ) {
@@ -87,6 +97,11 @@ export const mutations = {
 
   setScrollDirection( state, val ) {
     state.scrollDirection = val
+    if ( val === 1 ) {
+      state.scrollDirectionBool = true
+    } else if ( val === -1 ) {
+      state.scrollDirectionBool = false
+    }
   },
 
   setOrientation( state, val ) {
